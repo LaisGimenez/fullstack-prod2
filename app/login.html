@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- Fuentes google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!-- Enlaces a bootstrap CDM -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Nuestros archivos -->
+    <link href="/app/css/styles.css" rel="stylesheet" />
+</head>
+    
+<body>
+    <nav class="navbar navbar-expand-lg sticky-top">
+      <!-- Logo a la izquierda -->
+      <a class="navbar-brand" href="#" onclick="goPansList()">
+        <img src="img/logo-flow.png" width="60" height="60" alt="Logo">
+        KanbanFlow
+      </a>
+      <!-- Botón de hamburguesa para dispositivos móviles -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- Enlaces a la derecha -->
+      <div class="collapse navbar-collapse justify-content-end">
+        <ul class="navbar-nav me-5">
+          <li class="nav-item me-5 fs-3">
+            <a class="nav-link" href="#">Tutorial</a>
+          </li>
+          <li class="nav-item me-5 fs-3">
+            <a class="nav-link" href="#">Contacto</a>
+          </li>
+          <li class="nav-item me-5 fs-3">
+            <a class="nav-link" href="/app/index.html">Inicio</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <section class="vh-100">
+        <div class="container-fluid h-custom">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-9 col-lg-6 col-xl-5">
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+                class="img-fluid" alt="Sample image">
+            </div>
+            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+              <form>    
+                      
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                  <input type="email" id="form3Example3" class="form-control form-control-lg"
+                    placeholder="Introduce tu correo" />
+                  <label class="form-label" for="form3Example3">Correo Electrónico</label>
+                </div>
+      
+                <!-- Password input -->
+                <div class="form-outline mb-3">
+                  <input type="password" id="form3Example4" class="form-control form-control-lg"
+                    placeholder="Introduce la contraseña" />
+                  <label class="form-label" for="form3Example4">Contraseña</label>
+                </div>
+      
+                <div class="d-flex justify-content-between align-items-center">
+                  <!-- Checkbox -->
+                  <div class="form-check mb-0">
+                    <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
+                    <label class="form-check-label" for="form2Example3">
+                      Recuérdame
+                    </label>
+                  </div>
+                  <a href="#!" class="text-body">¿Has olvidado la contraseña?</a>
+                </div>
+      
+                <div class="text-center text-lg-start mt-4 pt-2">
+                  <button type="button" class="btn btn-primary btn-lg"
+                    style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
+                  <p class="small fw-bold mt-2 pt-1 mb-0">¿No tienes cuenta? <a href="#!"
+                      class="link-danger">Regístrate</a></p>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+         <!-- Footer -->
+    <footer class="bg-dark-subtle text-center text-lg-start mt-auto">
+      <div class="container d-flex justify-content-center py-5">
+        <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color: #5F6C90;">
+          <i class="bi bi-github"></i>
+        </button>
+        <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color: #5F6C90;">
+          <i class="bi bi-slack"></i>
+        </button>
+        <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color: #5F6C90;">
+          <i class="bi bi-trello"></i>
+        </button>
+        <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color: #5F6C90;">
+          <i class="bi bi-youtube"></i>
+        </button>
+      </div>
+      <div class="text-center text-white p-3" style="background-color: #F87C56;">
+        © 2024 FullStackFlow:
+      </div>
+    </footer>
+</body>
+</html>

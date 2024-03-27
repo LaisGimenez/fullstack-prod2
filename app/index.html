@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KanbanFlow</title>
+  <!-- Fuentes google fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <!-- Enlaces a bootstrap CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+    </script>
+  <!-- Enlaces a los archivos del proyecto -->
+  <link rel="stylesheet" href="./css/styles.css">
+  <script defer src="./js/app.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <!-- Logo a la izquierda -->
+    <a class="navbar-brand" href="#" onclick="goPansList()">
+      <img src="img/logo-flow.png" width="60" height="60" alt="Logo">
+      KanbanFlow
+    </a>
+    <!-- Botón de hamburguesa para dispositivos móviles -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Enlaces a la derecha -->
+    <div class="collapse navbar-collapse justify-content-end">
+      <ul class="navbar-nav me-5">
+        <li class="nav-item me-5 fs-3">
+          <a class="nav-link" href="#">Tutorial</a>
+        </li>
+        <li class="nav-item me-5 fs-3">
+          <a class="nav-link" href="#">Contacto</a>
+        </li>
+        <li class="nav-item me-5 fs-3">
+          <a class="nav-link" href="/app/login.html">Log in</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+<!-- Panel tableros -->
+    <div class="container-lg pt-5 mt-5">
+        <div id="dashboardHeader">
+            <div class="row">
+                <div class="col-6 pt-5">
+                  <h1 class="display-3 pt-5 text-secondary text-start">Bienvenidos a la app</h1>
+                </div>
+                <div class="col-6 pt-5">
+                  <h2 class="display-3 pt-5 text-end">de gestión de tableros</h2>
+                </div>
+            </div>
+            <div class="col text-center p-5 m-5">
+              <button id="newPanBtn" class="btn  p-5 m-5 fs-1" style="--bs-bg-opacity: .5;" onclick="openPanForm()"><i class="bi bi-plus-lg"></i> TABLERO</button>
+            </div>
+        </div>
+        <!-- Panel tareas -->
+        <div id="panHeader" class="d-none">
+          <div class="display-lg-5 text-center">
+              <h1 class="display-5 p-4">Organiza tus tareas</h1>
+          </div>
+          <div class="display-lg-5 text-center">
+            <button id="newTaskBtn" class="btn  p-5 m-5 fs-1" onclick="openTaskForm(0)"><i class="bi bi-plus-lg"></i> TAREA</button>
+          </div>
+        </div>
+    </div>
+    <div id="panelsList" class="container d-flex flex-wrap"></div>
+
+    <div id="panelPage" class="container d-none c-d2">
+
+        <div class="body-bg draggable-container m-2">
+          <!-- Columna 1 -->
+          <div class="section dctilte" id="backlogs-column" data-status="0">
+              <h3>Pendiente</h3>
+              <div id="backlogsList"></div>
+          </div>
+          <!-- Columna 2 -->
+          <div class="section dctilte" id="doings-column" data-status="1">
+              <h3>Desarrollo</h3>
+              <div id="doingsList"></div>
+          </div>
+          <!-- Columna 3 -->
+          <div class="section dctilte" id="tests-column" data-status="2">
+              <h3>Test</h3>
+              <div id="testsList"></div>
+          </div>
+          <!-- Columna 4 -->
+          <div class="section dctilte" id="dones-column" data-status="3">
+              <h3>Terminada</h3>
+              <div id="donesList"></div>
+          </div>
+        </div>
+    </div>
+  <!-- Footer -->
+    <footer class="bg-dark-subtle text-center text-lg-start mt-auto">
+      <div class="container d-flex justify-content-center py-5">
+        <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color: #5F6C90;">
+          <i class="bi bi-github"></i>
+        </button>
+        <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color: #5F6C90;">
+          <i class="bi bi-slack"></i>
+        </button>
+        <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color: #5F6C90;">
+          <i class="bi bi-trello"></i>
+        </button>
+        <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color: #5F6C90;">
+          <i class="bi bi-youtube"></i>
+        </button>
+      </div>
+      <div class="text-center text-white p-3" style="background-color: #F87C56;">
+        © 2024 FullStackFlow:
+      </div>
+    </footer>
+
+
+  <!-- Modales-->
+
+  <!-- Modal tablero -->
+  <div id="panelModal" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-fullscreen-sm-down">
+      <div class="modal-content">
+        <!--Header -->
+        <div class="modal-header">
+          <h4 id="panModalTitle" class="modal-title text-center">Nuevo panel</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <!--Body-->
+        <form class="was-validated" id="newPanForm" onsubmit="return handlePanForm(event, this)">
+          <input type="hidden" id="panId" name="panId">
+          <div class="modal-body">
+            <div class="input-group mb-3">
+              <!--Título-->
+              <div class="form-floating">
+                <input type="text" class="form-control" id="panName" placeholder="Nombre" name="panName" required>
+                <label for="panName">Nombre</label>
+                <div class="invalid-feedback">El nombre es necesario.</div>
+              </div>
+              <!--Fecha inicio-->
+              <div class="form-floating">
+                <input type="date" class="form-control" id="panDat" placeholder="Inicio" name="panDat" required>
+                <label for="panDat">Inicio</label>
+                <div class="invalid-feedback">La fecha de inicio del proyecto es necesaria.</div>
+              </div>
+            </div>
+            <!--Descripción-->
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="panDescrip" placeholder="Descripción" name="panDescrip" required>
+              <label for="panDescrip">Descripción</label>
+              <div class="invalid-feedback">La descripción del tablero es necesario.</div>
+            </div>
+            <!--Color -->
+            <div class="input-group mb-3">
+              <div class="form-floating">
+                <input type="color" class="form-control" id="panColor" placeholder="Color" name="panColor">
+                <label for="panColor"></label>
+              </div>
+            </div>
+          </div>
+          <!--Footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-success">Aceptar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+<!-- Modal Tarea -->
+  <div id="taskModal" class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <!--Header -->
+        <div class="modal-header">
+          <h4 id="tskModalTitle" class="modal-title">Nueva tarea</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <!--Id de tarea, status de tarea e id (hidden)-->
+        <form class="was-validated" id="taskForm" onsubmit="return handleTaskForm(event, this)">
+          <input type="hidden" name="tskId" id="tskId">
+          <input type="hidden" name="tskPanId" id="tskPanId">
+          <input type="hidden" name="tskStatus" id="tskStatus">
+          <div class="modal-body">
+            <!--Descripción-->
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="taskDescrip" placeholder="Descripción" name="taskDescrip" required>
+              <label for="taskDescrip">Descripción</label>
+              <div class="invalid-feedback">La descripción de la tarea es necesario.</div>
+            </div>
+            <!--Responsable-->
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="taskMember" placeholder="Responsable" name="taskMember" required>
+              <label for="taskMember">Responsable</label>
+              <div class="invalid-feedback">El responsable de la tarea es necesario.</div>
+            </div>
+            <!--Fecha finalización tarea-->
+            <div class="form-floating">
+              <input type="date" class="form-control" id="taskDat" placeholder="Fin" name="taskDat" required>
+              <label for="taskDat">Entrega</label>
+              <div class="invalid-feedback">La fecha de fin de tarea es necesaria</div>
+            </div>
+          </div>
+          <!--Footer-->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-success">Aceptar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+<!-- Modal eliminación -->
+  <div class="modal" id="confirmDelete">
+    <div class="modal-dialog delete-modal">
+      <div class="modal-content">
+        <!--Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Eliminar información</h4>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <!--body -->
+        <div class="modal-body">
+          ¿Está seguro de eliminar <span id="toDeleteName" class="bold"></span>?
+        </div>
+        <!--footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" onclick="deleteConfirmed()">ELIMINAR</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
